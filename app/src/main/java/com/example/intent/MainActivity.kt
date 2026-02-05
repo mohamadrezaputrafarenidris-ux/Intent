@@ -1,6 +1,7 @@
 package com.example.intent
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.net.toUri
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +31,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
         val buttonMoveWithObject: Button= findViewById(R.id.btn_move_activity_object)
         buttonMoveWithObject.setOnClickListener(this)
+
+        val btnDialPhone: Button= findViewById(R.id.btn_dial_number)
+        btnDialPhone.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -56,6 +61,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
                 val moveWithObjectIntent = Intent(this@MainActivity, MoveWithObjectActivity::class.java)
                 moveWithObjectIntent.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person)
                 startActivity(moveWithObjectIntent)
+            }
+
+            R.id.btn_dial_number -> {
+                val phoneNumber = "081210841382"
+                val dialPhoneIntent = Intent(Intent.ACTION_DIAL, "tel:phoneNumber".toUri())
+                startActivity(dialPhoneIntent)
             }
         }
     }
