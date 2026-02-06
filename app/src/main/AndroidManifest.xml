@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Intent">
         <activity
+            android:name=".MoveForResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoveWithObjectActivty"
             android:exported="false" />
         <activity
